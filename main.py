@@ -2,6 +2,7 @@ import sys, os.path
 from PySide6.QtWidgets import QMainWindow, QApplication
 from PySide6.QtGui import QStandardItemModel, QStandardItem
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QColor
 
 from UI.shot_tracker_ui import Ui_shot_tracker
 
@@ -32,18 +33,18 @@ class ShotTracker(QMainWindow, Ui_shot_tracker):
         # The file token.json stores the user's access and refresh tokens, and is
         # created automatically when the authorization flow completes for the first
         # time.
-        if os.path.exists('Qt/Qt_Shot_Tracker/token.json'):
-            creds = Credentials.from_authorized_user_file('Qt/Qt_Shot_Tracker/token.json', SCOPES)
+        if os.path.exists('token.json'):
+            creds = Credentials.from_authorized_user_file('token.json', SCOPES)
         # If there are no (valid) credentials available, let the user log in.
         if not creds or not creds.valid:
             if creds and creds.expired and creds.refresh_token:
                 creds.refresh(Request())
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    'Qt/Qt_Shot_Tracker/credentials.json', SCOPES)
+                    'credentials.json', SCOPES)
                 creds = flow.run_local_server(port=0)
             # Save the credentials for the next run
-            with open('Qt/Qt_Shot_Tracker/token.json', 'w') as token:
+            with open('token.json', 'w') as token:
                 token.write(creds.to_json())
 
         try:
@@ -157,17 +158,17 @@ class ShotTracker(QMainWindow, Ui_shot_tracker):
                 for column in range(self.item_model.columnCount()):
                     index = self.item_model.index(row, column)
                     item = self.item_model.itemFromIndex(index)
-                    item.setBackground(Qt.green)  # Set the desired background color
+                    item.setBackground(QColor('#b6d7a8'))  # Set the desired background color
             elif is_in_progress:
                 for column in range(self.item_model.columnCount()):
                     index = self.item_model.index(row, column)
                     item = self.item_model.itemFromIndex(index)
-                    item.setBackground(Qt.yellow)  # Set the desired background color
+                    item.setBackground(QColor('#ffe599'))  # Set the desired background color
             elif is_not_finished:
                 for column in range(self.item_model.columnCount()):
                     index = self.item_model.index(row, column)
                     item = self.item_model.itemFromIndex(index)
-                    item.setBackground(Qt.white)  # Set the desired background color
+                    item.setBackground(QColor('#ffffff'))  # Set the desired background color
             
                 
         
