@@ -6,17 +6,28 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>810</width>
-    <height>546</height>
+    <width>1099</width>
+    <height>380</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Shot Tracker</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="QTreeView" name="tree_view"/>
+     <widget class="QTreeView" name="tree_view">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -25,8 +36,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>810</width>
-     <height>23</height>
+     <width>1099</width>
+     <height>20</height>
     </rect>
    </property>
   </widget>
